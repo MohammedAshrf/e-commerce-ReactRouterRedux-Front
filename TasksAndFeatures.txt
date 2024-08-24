@@ -1,0 +1,17 @@
+===> Tasks:
+1- 
+
+
+===> More feature to add:
+1-** Change bad images to good images.
+2-** Save the prev path of routes when go back from singlrProduct page
+   to the Products page.
+
+1- Animate the Upove navbar.
+2- Add search.
+3- Add pagination (not so important for the current time).
+4- Add a background for the slider that takes the same product picture,
+   and then put a white overlay on it, finally, put the product picture
+   upove both of them in samaller width and height.
+5- Change the data to a real back-end and uplaod it on the firebase
+   (Look at Scrimba course react or react router).
