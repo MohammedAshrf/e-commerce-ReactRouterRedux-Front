@@ -1,19 +1,20 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import GoBackArrow from "../assets/SVGs/GoBackArrow";
 import { Tooltip, Button } from "@material-tailwind/react";
+import { addToCart } from "../store/slices/CartSlice";
 
 export default function SingleProduct() {
   const { data } = useSelector((state) => state.products);
   const { category, id } = useParams();
   //   console.log(params);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const theSingleProduct = data
     .filter((product) => product.type === category)
     .find((product) => product.id === id);
-  console.log(theSingleProduct);
-
-  const navigate = useNavigate();
+  // console.log(theSingleProduct);
 
   return (
     <>
@@ -25,9 +26,6 @@ export default function SingleProduct() {
         >
           {GoBackArrow} Back to all products
         </div>
-        {/* <div id="try">
-          {theSingleProduct && <div>{theSingleProduct.img}</div>}
-        </div> */}
         <div className="px-12 flex flex-wrap gap-12 items-center  justify-center">
           {theSingleProduct && (
             <div
@@ -139,14 +137,18 @@ export default function SingleProduct() {
                 <Tooltip
                   content="Add to cart"
                   placement="bottom"
-                  color="black"
                   variant="outlined"
+                  className="bg-white text-white border border-gray border-2"
                 >
                   <Button
+                    className="my-2"
                     color="black"
                     variant="outlined"
                     size="md"
                     ripple={true}
+                    onClick={() =>
+                      dispatch(addToCart({ ...theSingleProduct, amount: 1 }))
+                    }
                   >
                     Add to cart
                   </Button>

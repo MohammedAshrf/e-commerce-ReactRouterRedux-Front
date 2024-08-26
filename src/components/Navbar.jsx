@@ -4,8 +4,15 @@ import ShoppingBag from "../assets/SVGs/ShoppingBag.jsx";
 import Person from "../assets/SVGs/Person.jsx";
 import { Link, Outlet } from "react-router-dom";
 import Home from "../assets/SVGs/Home.jsx";
+import { useDispatch, useSelector } from "react-redux";
+import { handleOpen } from "../store/slices/CartSlice.jsx";
+import Cart from "../pages/Cart.jsx";
 
 export default function Navbar() {
+  const dispatch = useDispatch();
+  const { cart } = useSelector((state) => state.cart);
+  console.log(cart);
+
   return (
     <>
       <div className="w-full h-12 bg-black text-white-100 text-center py-2 text-xl font-bold">
@@ -23,21 +30,26 @@ export default function Navbar() {
               {Home}
               Home
             </Link>
-            <Link className="flex gap-1">
+            <Link to="wish_list" className="flex gap-1">
               {Heart}
               Wish list
             </Link>
-            <Link className="flex gap-1">
+            <button
+              onClick={() => dispatch(handleOpen())}
+              className="flex gap-1"
+            >
               {ShoppingBag}
               Shopping bag
-            </Link>
-            <Link className="flex gap-1">
+            </button>
+            <Link to="signin" className="flex gap-1">
               {Person}
               Sign in
             </Link>
           </ul>
         </div>
       </div>
+
+      {<Cart />}
       <Outlet />
     </>
   );
