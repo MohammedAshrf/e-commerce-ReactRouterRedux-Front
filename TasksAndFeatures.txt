@@ -1,13 +1,17 @@
 ===> Tasks:
-1- 
+1- Add the color and size filters first, and then
+2- Modify the filters to filter the current products wether they're filtered
+   or not instead of filtering all products.
 
 
 ===> More feature to add:
 1-** Change bad images to good images.
 2-** Save the prev path of routes when go back from singlrProduct page
    to the Products page.
+3-** Add the possibility of increasing and decreasign the Amount of the item, 
+  like this ===> Amount - 2 + ..... 
 
-1- Animate the Upove navbar.
+1- Animate the Upove navbar to shrink the height and padding after like 3 seconds.
 2- Add search.
 3- Add pagination (not so important for the current time).
 4- Add a background for the slider that takes the same product picture,
@@ -15,3 +19,4 @@
    upove both of them in samaller width and height.
 5- Change the data to a real back-end and uplaod it on the firebase
    (Look at Scrimba course react or react router).
+6-* Make it Responsive.

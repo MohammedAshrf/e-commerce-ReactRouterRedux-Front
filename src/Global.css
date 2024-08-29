@@ -1,0 +1,40 @@
+#root {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Start Slider Component*/
+.slider {
+  width: 100%;
+  height: 600px;
+}
+
+@media screen and (max-width: 800px) {
+  .slider {
+    height: 420px !important;
+  }
+}
+
+@media screen and (max-width: 510px) {
+  .slider {
+    height: 250px !important;
+  }
+}
+
+/* End Slider Component*/
+
+/* Start Products Page*/
+#menuHandler {
+  box-shadow: none;
+  border: solid 2px black;
+  padding: 2px 4px;
+  border-radius: 6px;
+}
+
+#menuHandler:hover {
+  background-color: black;
+  color: white;
+}
+
+/* End Products Page*/

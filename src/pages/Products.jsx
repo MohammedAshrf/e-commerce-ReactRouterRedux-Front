@@ -1,14 +1,28 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { productsFilter } from "../store/slices/ProductsSlice";
+import {
+  Menu,
+  MenuHandler,
+  MenuList,
+  MenuItem,
+  Button,
+} from "@material-tailwind/react";
 
 export default function Products() {
   const { category } = useParams();
-  const { categories, filters, data } = useSelector((state) => state.products);
+  const { categories, filters, data, colors, sizes } = useSelector(
+    (state) => state.products
+  );
   // console.log(data);
   const dispatch = useDispatch();
   // console.log(categories);
   const navigate = useNavigate();
+
+  const finalFilteredData = data.filter((product) => product.type === category);
+  console.log(finalFilteredData);
+
+  // "No items matches your filter";
 
   return (
     <>
@@ -30,7 +44,7 @@ export default function Products() {
         <h1 className="text-5xl ps-8 font-serif font-bold">{category}</h1>
         <div className="flex justify-start gap-4 mb-2 ps-8 py-4">
           {filters.map((button) => {
-            return (
+            return button !== "Select a color" && button !== "Select a size" ? (
               <button
                 key={button}
                 className="border-2 border-black py-2 px-4 rounded-md
@@ -42,13 +56,58 @@ export default function Products() {
               >
                 {button}
               </button>
+            ) : (
+              <Menu key={button}>
+                <MenuHandler className="bg-white-100" id="menuHandler">
+                  <Button>{button}</Button>
+                </MenuHandler>
+                <MenuList className="bg-white-100">
+                  {button === "Select a color"
+                    ? colors.map((color) => {
+                        return (
+                          <MenuItem
+                            key={color}
+                            className="bg-white-100 border mb-1"
+                            style={{ color: color }}
+                            onClick={() =>
+                              dispatch(
+                                productsFilter({
+                                  filterType: button,
+                                  value: color,
+                                })
+                              )
+                            }
+                          >
+                            {color}
+                          </MenuItem>
+                        );
+                      })
+                    : sizes.map((size) => {
+                        return (
+                          <MenuItem
+                            key={size}
+                            className="bg-white-100 border mb-1"
+                            onClick={() =>
+                              dispatch(
+                                productsFilter({
+                                  filterType: button,
+                                  value: size,
+                                })
+                              )
+                            }
+                          >
+                            {size}
+                          </MenuItem>
+                        );
+                      })}
+                </MenuList>
+              </Menu>
             );
           })}
         </div>
         <div className="px-8 flex flex-wrap gap-12 items-center justify-center">
-          {data
-            .filter((product) => product.type === category)
-            .map((product) => {
+          {finalFilteredData.length > 1 ? (
+            finalFilteredData.map((product) => {
               return (
                 <div
                   key={product.id}
@@ -56,7 +115,7 @@ export default function Products() {
                   border-black border rounded-md"
                 >
                   <div
-                    className="w-64 h-48 mb-4 rounded-lg overflow-hidden 
+                    className="w-64 h-48 mb-2 rounded-lg overflow-hidden 
                   hover:shadow-xl m-2 cursor-pointer"
                     onClick={() => navigate(product.id)}
                   >
@@ -66,10 +125,17 @@ export default function Products() {
                       alt={product.name}
                     />
                   </div>
-                  <h2 className="text-center text-xl mb-1 font-bold">
+                  <h2
+                    className="text-center text-xl mb-1 font-bold cursor-pointer 
+                    hover:bg-gray-300 py-1.5 px-14 w-fit m-auto rounded-2xl"
+                    onClick={() => navigate(product.id)}
+                  >
                     {product.name}
                   </h2>
-                  <p className="text-center text-sm px-3 py-1 text-gray-600 font-normal">
+                  <p
+                    className="text-center text-sm px-3 py-1 text-gray-600 font-normal cursor-pointer"
+                    onClick={() => navigate(product.id)}
+                  >
                     {product.text}
                   </p>
                   <hr className="border" />
@@ -91,7 +157,10 @@ export default function Products() {
                   </div>
                 </div>
               );
-            })}
+            })
+          ) : (
+            <div className="pt-4 text-xl">No items matches your filter</div>
+          )}
         </div>
       </div>
     </>

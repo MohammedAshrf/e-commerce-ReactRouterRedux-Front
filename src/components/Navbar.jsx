@@ -10,8 +10,8 @@ import Cart from "../pages/Cart.jsx";
 
 export default function Navbar() {
   const dispatch = useDispatch();
-  const { cart } = useSelector((state) => state.cart);
-  console.log(cart);
+  const { totalAmount } = useSelector((state) => state.cart);
+  console.log(totalAmount);
 
   return (
     <>
@@ -36,9 +36,15 @@ export default function Navbar() {
             </Link>
             <button
               onClick={() => dispatch(handleOpen())}
-              className="flex gap-1"
+              className="flex items-center gap-1"
             >
-              {ShoppingBag}
+              {totalAmount > 0 ? (
+                <span className="text-lg bg-gray-300 px-3 py-px rounded-full">
+                  {totalAmount}
+                </span>
+              ) : (
+                ShoppingBag
+              )}
               Shopping bag
             </button>
             <Link to="signin" className="flex gap-1">

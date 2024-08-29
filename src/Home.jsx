@@ -1,6 +1,6 @@
 import SecondNavbar from "./components/SecondNavbar";
 import Slider from "./components/Slider";
-import "./Home.css";
+import "./Global.css";
 
 function Home() {
   return (

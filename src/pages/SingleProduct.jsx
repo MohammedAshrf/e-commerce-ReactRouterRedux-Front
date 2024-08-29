@@ -3,18 +3,19 @@ import { useNavigate, useParams } from "react-router-dom";
 import GoBackArrow from "../assets/SVGs/GoBackArrow";
 import { Tooltip, Button } from "@material-tailwind/react";
 import { addToCart } from "../store/slices/CartSlice";
+import { useState } from "react";
 
 export default function SingleProduct() {
   const { data } = useSelector((state) => state.products);
   const { category, id } = useParams();
-  //   console.log(params);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [selectedSize, setSelectedSize] = useState();
+  const [selectedColor, setSelectedColor] = useState();
 
   const theSingleProduct = data
     .filter((product) => product.type === category)
     .find((product) => product.id === id);
-  // console.log(theSingleProduct);
 
   return (
     <>
@@ -66,6 +67,7 @@ export default function SingleProduct() {
                                 focus:border-slate-400 hover:border-slate-400
                                 shadow-sm focus:shadow-md appearance-none
                                 cursor-pointer"
+                        onClick={(e) => setSelectedSize(e.target.value)}
                       >
                         {theSingleProduct.size.map((size) => {
                           return (
@@ -107,6 +109,7 @@ export default function SingleProduct() {
                                 focus:border-slate-400 hover:border-slate-400
                                 shadow-sm focus:shadow-md appearance-none
                                 cursor-pointer"
+                      onClick={(e) => setSelectedColor(e.target.value)}
                     >
                       {theSingleProduct.color.map((color) => {
                         return (
@@ -147,7 +150,24 @@ export default function SingleProduct() {
                     size="md"
                     ripple={true}
                     onClick={() =>
-                      dispatch(addToCart({ ...theSingleProduct, amount: 1 }))
+                      dispatch(
+                        addToCart({
+                          amount: 1,
+                          id: theSingleProduct.id,
+                          img: theSingleProduct.img,
+                          name: theSingleProduct.name,
+                          size: selectedSize
+                            ? selectedSize
+                            : theSingleProduct.size
+                            ? theSingleProduct.size[0]
+                            : "one size product",
+
+                          color: selectedColor
+                            ? selectedColor
+                            : theSingleProduct.color[0],
+                          price: theSingleProduct.price,
+                        })
+                      )
                     }
                   >
                     Add to cart
