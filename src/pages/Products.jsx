@@ -1,4 +1,4 @@
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { productsFilter } from "../store/slices/ProductsSlice";
 import {
@@ -8,6 +8,7 @@ import {
   MenuItem,
   Button,
 } from "@material-tailwind/react";
+import ProductCard from "../components/ProductCard";
 
 export default function Products() {
   const { category } = useParams();
@@ -16,17 +17,14 @@ export default function Products() {
   );
   // console.log(data);
   const dispatch = useDispatch();
-  // console.log(categories);
-  const navigate = useNavigate();
+  // console.log(categories);\
 
   const finalFilteredData = data.filter((product) => product.type === category);
-  console.log(finalFilteredData);
-
-  // "No items matches your filter";
+  // console.log(finalFilteredData);
 
   return (
     <>
-      <div>
+      <div className="pb-4">
         <div className="flex justify-center gap-4 mb-2">
           {categories.map((button) => {
             return (
@@ -47,8 +45,12 @@ export default function Products() {
             return button !== "Select a color" && button !== "Select a size" ? (
               <button
                 key={button}
-                className="border-2 border-black py-2 px-4 rounded-md
-                hover:bg-black hover:text-white-100 cursor-pointer"
+                className={`border-2 border-black py-2 px-4 rounded-md
+                ${
+                  button === "Clear Filter"
+                    ? "bg-black text-white-100 hover:bg-white-100 hover:text-black"
+                    : "hover:bg-black hover:text-white-100"
+                } cursor-pointer`}
                 to={`products/${button}`}
                 onClick={() => {
                   dispatch(productsFilter(button));
@@ -106,56 +108,18 @@ export default function Products() {
           })}
         </div>
         <div className="px-8 flex flex-wrap gap-12 items-center justify-center">
-          {finalFilteredData.length > 1 ? (
+          {finalFilteredData.length >= 1 ? (
             finalFilteredData.map((product) => {
               return (
-                <div
+                <ProductCard
                   key={product.id}
-                  className="flex flex-col basis-1/5
-                  border-black border rounded-md"
-                >
-                  <div
-                    className="w-64 h-48 mb-2 rounded-lg overflow-hidden 
-                  hover:shadow-xl m-2 cursor-pointer"
-                    onClick={() => navigate(product.id)}
-                  >
-                    <img
-                      className="w-full h-full"
-                      src={product.img}
-                      alt={product.name}
-                    />
-                  </div>
-                  <h2
-                    className="text-center text-xl mb-1 font-bold cursor-pointer 
-                    hover:bg-gray-300 py-1.5 px-14 w-fit m-auto rounded-2xl"
-                    onClick={() => navigate(product.id)}
-                  >
-                    {product.name}
-                  </h2>
-                  <p
-                    className="text-center text-sm px-3 py-1 text-gray-600 font-normal cursor-pointer"
-                    onClick={() => navigate(product.id)}
-                  >
-                    {product.text}
-                  </p>
-                  <hr className="border" />
-                  <div className="flex justify-between p-2 text-gray-600">
-                    <p>{product.price}$</p>
-                    <div className="flex gap-2">
-                      {product.color.map((c) => {
-                        {
-                          return (
-                            <div
-                              key={c}
-                              style={{ backgroundColor: `${c}` }}
-                              className="rounded-full w-5 h-5"
-                            ></div>
-                          );
-                        }
-                      })}
-                    </div>
-                  </div>
-                </div>
+                  id={product.id}
+                  img={product.img}
+                  name={product.name}
+                  text={product.text}
+                  price={product.price}
+                  color={product.color}
+                />
               );
             })
           ) : (
@@ -166,3 +130,51 @@ export default function Products() {
     </>
   );
 }
+
+// <div
+//   key={product.id}
+//   className="flex flex-col basis-1/5
+//   border-black border rounded-md"
+// >
+//   <div
+//     className="w-64 h-48 mb-2 rounded-lg overflow-hidden
+//   hover:shadow-xl m-2 cursor-pointer"
+//     onClick={() => navigate(product.id)}
+//   >
+//     <img
+//       className="w-full h-full"
+//       src={product.img}
+//       alt={product.name}
+//     />
+//   </div>
+//   <h2
+//     className="text-center text-xl mb-1 font-bold cursor-pointer
+//     hover:bg-gray-300 py-1.5 px-14 w-fit m-auto rounded-2xl"
+//     onClick={() => navigate(product.id)}
+//   >
+//     {product.name}
+//   </h2>
+//   <p
+//     className="text-center text-sm px-3 py-1 text-gray-600 font-normal cursor-pointer"
+//     onClick={() => navigate(product.id)}
+//   >
+//     {product.text}
+//   </p>
+//   <hr className="border" />
+//   <div className="flex justify-between p-2 text-gray-600">
+//     <p>{product.price}$</p>
+//     <div className="flex gap-2">
+//       {product.color.map((c) => {
+//         {
+//           return (
+//             <div
+//               key={c}
+//               style={{ backgroundColor: `${c}` }}
+//               className="rounded-full w-5 h-5"
+//             ></div>
+//           );
+//         }
+//       })}
+//     </div>
+//   </div>
+// </div>

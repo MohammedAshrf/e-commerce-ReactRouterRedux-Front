@@ -1,49 +1,50 @@
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
-  Typography,
-  Button,
-} from "@material-tailwind/react";
+/* eslint-disable react/prop-types */
+import { useNavigate } from "react-router-dom";
 
-export default function ProductCard() {
+export default function ProductCard({ id, img, name, text, price, color }) {
+  const navigate = useNavigate();
+
   return (
-    <Card className="w-96">
-      <CardHeader shadow={false} floated={false} className="h-96">
-        <img
-          src="https://images.unsplash.com/photo-1629367494173-c78a56567877?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=927&q=80"
-          alt="card-image"
-          className="h-full w-full object-cover"
-        />
-      </CardHeader>
-      <CardBody>
-        <div className="mb-2 flex items-center justify-between">
-          <Typography color="blue-gray" className="font-medium">
-            Apple AirPods
-          </Typography>
-          <Typography color="blue-gray" className="font-medium">
-            $95.00
-          </Typography>
+    <div
+      key={id}
+      className="flex flex-col basis-1/5
+                  border-black border rounded-md"
+    >
+      <div
+        className="w-64 h-60 mb-2 rounded-lg overflow-hidden 
+                  hover:shadow-xl m-2 cursor-pointer"
+        onClick={() => navigate(id)}
+      >
+        <img className="w-full h-full" src={img} alt={name} />
+      </div>
+      <h2
+        className="text-center text-xl mb-1 font-bold cursor-pointer 
+                    hover:bg-gray-300 py-1.5 px-14 w-fit m-auto rounded-2xl"
+        onClick={() => navigate(id)}
+      >
+        {name}
+      </h2>
+      <p
+        className="text-center text-sm px-3 py-1 text-gray-600 font-normal cursor-pointer"
+        onClick={() => navigate(id)}
+      >
+        {text}
+      </p>
+      <hr className="border" />
+      <div className="flex justify-between p-2 text-gray-600">
+        <p>{price}$</p>
+        <div className="flex gap-2">
+          {color.map((c) => {
+            return (
+              <div
+                key={c}
+                style={{ backgroundColor: `${c}` }}
+                className="rounded-full w-5 h-5"
+              ></div>
+            );
+          })}
         </div>
-        <Typography
-          variant="small"
-          color="gray"
-          className="font-normal opacity-75"
-        >
-          With plenty of talk and listen time, voice-activated Siri access, and
-          an available wireless charging case.
-        </Typography>
-      </CardBody>
-      <CardFooter className="pt-0">
-        <Button
-          ripple={false}
-          fullWidth={true}
-          className="bg-blue-gray-900/10 text-blue-gray-900 shadow-none hover:scale-105 hover:shadow-none focus:scale-105 focus:shadow-none active:scale-100"
-        >
-          Add to Cart
-        </Button>
-      </CardFooter>
-    </Card>
+      </div>
+    </div>
   );
 }

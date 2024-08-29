@@ -1,14 +1,16 @@
 ===> Tasks:
-1- Add the color and size filters first, and then
-2- Modify the filters to filter the current products wether they're filtered
+1- Done: Add the color and size filters first, and then
+2- Done: Add the title of the products Section. 
+3- Done: Modify the filters to filter the current products wether they're filtered
    or not instead of filtering all products.
-
+4- Store Filters.
+5- Modify the card product to go to its page product when i click it from any where.
 
 ===> More feature to add:
 1-** Change bad images to good images.
 2-** Save the prev path of routes when go back from singlrProduct page
    to the Products page.
-3-** Add the possibility of increasing and decreasign the Amount of the item, 
+3-** Done: Add the possibility of increasing and decreasign the Amount of the item, 
   like this ===> Amount - 2 + ..... 
 
 1- Animate the Upove navbar to shrink the height and padding after like 3 seconds.

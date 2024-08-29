@@ -20,7 +20,11 @@ const colors = [
   "black",
   "brown",
 ];
+
 const sizes = ["S", "M", "L", "XL"];
+
+const savedData = JSON.parse(localStorage.getItem("savedData"));
+const savedFilters = JSON.parse(localStorage.getItem("savedFilters"));
 
 const ProductsSlice = createSlice({
   name: "products",
@@ -35,49 +39,60 @@ const ProductsSlice = createSlice({
       "Bags",
       "Suits",
     ],
-    filters: initialFilters,
-    data: storeData,
+    data: savedData ? savedData : storeData,
+    filters: savedFilters ? savedFilters : initialFilters,
     colors: colors,
     sizes: sizes,
   },
   reducers: {
     productsFilter(state, action) {
-      //   console.log(action.payload);
+      // console.log(action.payload);
+
       if (action.payload === "Male") {
-        state.data = storeData.filter((product) => product.gender === "male");
+        console.log(action.payload);
+        state.data = state.data.filter((product) => product.gender === "male");
       }
       if (action.payload === "Female") {
-        state.data = storeData.filter((product) => product.gender === "female");
+        state.data = state.data.filter(
+          (product) => product.gender === "female"
+        );
       }
       if (action.payload === "High Price") {
-        state.data = storeData.filter((product) => product.price >= 300);
+        state.data = state.data.filter((product) => product.price >= 300);
       }
       if (action.payload === "Low Price") {
-        state.data = storeData.filter((product) => product.price <= 300);
+        state.data = state.data.filter((product) => product.price <= 300);
       }
 
       if (action.payload.filterType === "Select a color") {
         // console.log(action.payload);
-        state.data = storeData.filter((product) =>
+        state.data = state.data.filter((product) =>
           product.color.find((color) => color === action.payload.value)
         );
       }
       if (action.payload.filterType === "Select a size") {
         // console.log(action.payload);
-        state.data = storeData.filter((product) =>
+        state.data = state.data.filter((product) =>
           product.size?.find((size) => size === action.payload.value)
         );
       }
 
       if (action.payload) {
-        // console.log(action.payload);
+        console.log(action.payload);
         if (!state.filters.includes("Clear Filter")) {
           state.filters = ["Clear Filter", ...state.filters];
+          localStorage.setItem("savedFilters", JSON.stringify(state.filters));
         }
       }
+
       if (action.payload === "Clear Filter") {
         state.filters = initialFilters;
         state.data = storeData;
+        localStorage.setItem("savedFilters", JSON.stringify(initialFilters));
+        localStorage.setItem("savedData", JSON.stringify(storeData));
+      } else {
+        localStorage.setItem("savedData", JSON.stringify(state.data));
+        localStorage.setItem("savedFilters", JSON.stringify(state.filters));
       }
     },
   },

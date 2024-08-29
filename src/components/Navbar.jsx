@@ -11,7 +11,7 @@ import Cart from "../pages/Cart.jsx";
 export default function Navbar() {
   const dispatch = useDispatch();
   const { totalAmount } = useSelector((state) => state.cart);
-  console.log(totalAmount);
+  // console.log(totalAmount);
 
   return (
     <>
