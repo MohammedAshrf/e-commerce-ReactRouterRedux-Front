@@ -1,24 +1,28 @@
 ===> Tasks:
-1- Done: Add the color and size filters first, and then
-2- Done: Add the title of the products Section. 
-3- Done: Modify the filters to filter the current products wether they're filtered
-   or not instead of filtering all products.
-4- Store Filters.
-5- Modify the card product to go to its page product when i click it from any where.
+1- Done: Create the footer.
+2- Login first before:
+   - Adding to wish list.
+   - Adding to cart.
+   - Getting to wish list page.
+   - Displaying the shipping bag.
 
 ===> More feature to add:
 1-** Change bad images to good images.
-2-** Save the prev path of routes when go back from singlrProduct page
-   to the Products page.
-3-** Done: Add the possibility of increasing and decreasign the Amount of the item, 
-  like this ===> Amount - 2 + ..... 
+
 
 1- Animate the Upove navbar to shrink the height and padding after like 3 seconds.
 2- Add search.
 3- Add pagination (not so important for the current time).
-4- Add a background for the slider that takes the same product picture,
-   and then put a white overlay on it, finally, put the product picture
-   upove both of them in samaller width and height.
-5- Change the data to a real back-end and uplaod it on the firebase
+4- Change the data to a real back-end and uplaod it on the firebase
    (Look at Scrimba course react or react router).
-6-* Make it Responsive.
+5-* Make it Responsive.
+
+
+
+===> Main Features: 
+1- Smooth navigation between website pages.
+2- Filtering products.
+3- Storing the filtered products in the local storage.
+4- Of course, shopping cart, with the ability of increasing or decreasing 
+   the amount of the products.
+5- 

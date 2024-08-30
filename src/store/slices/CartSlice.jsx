@@ -91,9 +91,6 @@ const cartSlice = createSlice({
       localStorage.setItem("totalPrice", JSON.stringify(state.totalPrice));
       localStorage.setItem("totalAmount", JSON.stringify(state.totalAmount));
     },
-    // decreaseAmount(state, action) {
-    //   console.log(action.payload);
-    // },
   },
 });
 

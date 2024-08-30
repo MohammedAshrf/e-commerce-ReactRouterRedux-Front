@@ -8,7 +8,7 @@ import {
   MenuItem,
   Button,
 } from "@material-tailwind/react";
-import ProductCard from "../components/ProductCard";
+import ProductCard from "../components/main/Card";
 
 export default function Products() {
   const { category } = useParams();

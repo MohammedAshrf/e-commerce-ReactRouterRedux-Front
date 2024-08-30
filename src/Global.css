@@ -22,9 +22,9 @@
   }
 }
 
-/* End Slider Component*/
+/* End Slider Component */
 
-/* Start Products Page*/
+/* Start Products Page */
 #menuHandler {
   box-shadow: none;
   border: solid 2px black;
@@ -37,4 +37,11 @@
   color: white;
 }
 
-/* End Products Page*/
+/* End Products Page */
+
+/* Start Signin Page */
+#signin {
+  background-color: black;
+}
+
+/* Start Signin Page */

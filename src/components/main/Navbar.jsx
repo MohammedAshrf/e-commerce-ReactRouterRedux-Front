@@ -1,17 +1,18 @@
-import Logo from "../assets/images/logo.png";
-import Heart from "../assets/SVGs/heart.jsx";
-import ShoppingBag from "../assets/SVGs/ShoppingBag.jsx";
-import Person from "../assets/SVGs/Person.jsx";
+import Logo from "../../assets/images/logo.png";
+import Heart from "../../assets/SVGs/heart.jsx";
+import ShoppingBag from "../../assets/SVGs/ShoppingBag.jsx";
+import Person from "../../assets/SVGs/Person.jsx";
 import { Link, Outlet } from "react-router-dom";
-import Home from "../assets/SVGs/Home.jsx";
+import Home from "../../assets/SVGs/Home.jsx";
 import { useDispatch, useSelector } from "react-redux";
-import { handleOpen } from "../store/slices/CartSlice.jsx";
-import Cart from "../pages/Cart.jsx";
+import { handleOpen } from "../../store/slices/CartSlice.jsx";
+import Cart from "../../pages/Cart.jsx";
 
 export default function Navbar() {
   const dispatch = useDispatch();
   const { totalAmount } = useSelector((state) => state.cart);
-  // console.log(totalAmount);
+  // const { user } = useSelector((state) => state.auth);
+  // console.log(user.authUser);
 
   return (
     <>

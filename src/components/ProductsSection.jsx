@@ -1,5 +1,5 @@
 import { storeData } from "../assets/data/dummyData";
-import ProductCard from "./ProductCard";
+import ProductCard from "./main/Card";
 
 export default function ProductsSection() {
   return (

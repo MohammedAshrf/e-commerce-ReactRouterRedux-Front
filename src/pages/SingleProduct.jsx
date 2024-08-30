@@ -14,8 +14,12 @@ export default function SingleProduct() {
   const [selectedColor, setSelectedColor] = useState();
 
   const theSingleProduct = data
-    .filter((product) => product.type === category)
+    // .filter((product) => product.type === category)
     .find((product) => product.id === id);
+
+  const backnavigation = category ? `../products/${category}` : `..`;
+
+  const backstatement = category ? "Back to all products" : "Back to Home page";
 
   return (
     <>
@@ -23,9 +27,9 @@ export default function SingleProduct() {
         <div
           className="mx-6 my-2 mb-4 py-1 px-2 flex gap-1 cursor-pointer
                     bg-gray-200 hover:bg-gray-300 w-fit rounded-full"
-          onClick={() => navigate(`../products/${category}`)}
+          onClick={() => navigate(backnavigation)}
         >
-          {GoBackArrow} Back to all products
+          {GoBackArrow} {backstatement}
         </div>
         <div className="px-12 flex flex-wrap gap-12 items-center  justify-center">
           {theSingleProduct && (

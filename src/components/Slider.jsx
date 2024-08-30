@@ -12,14 +12,10 @@ export default function Slider() {
   const sliderIndex = useSelector((state) => state.slider.value);
   const dispatch = useDispatch();
 
-  // style={{ height: "550px" }}
   return (
     <>
       <div>
-        <div
-          className="slider relative mb-8 m-auto overflow-hidden"
-          // style={{ height: "620px" }}
-        >
+        <div className="slider relative mb-8 m-auto overflow-hidden">
           <img
             className="w-full h-full"
             src={sliderData[sliderIndex].img}
