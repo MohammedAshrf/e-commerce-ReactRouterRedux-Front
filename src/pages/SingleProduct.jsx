@@ -13,9 +13,7 @@ export default function SingleProduct() {
   const [selectedSize, setSelectedSize] = useState();
   const [selectedColor, setSelectedColor] = useState();
 
-  const theSingleProduct = data
-    // .filter((product) => product.type === category)
-    .find((product) => product.id === id);
+  const theSingleProduct = data.find((product) => product.id === id);
 
   const backnavigation = category ? `../products/${category}` : `..`;
 

@@ -1,8 +1,18 @@
 /* eslint-disable react/prop-types */
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
-export default function ProductCard({ id, img, name, text, price, color }) {
+export default function ProductCard({
+  id,
+  category,
+  img,
+  name,
+  text,
+  price,
+  color,
+}) {
   const navigate = useNavigate();
+  const location = useLocation();
+  console.log(location);
 
   return (
     <div
@@ -13,7 +23,15 @@ export default function ProductCard({ id, img, name, text, price, color }) {
       <div
         className="w-64 h-60 mb-2 rounded-lg overflow-hidden 
                   hover:shadow-xl m-2 cursor-pointer"
-        onClick={() => navigate(`${id}`)}
+        onClick={() => {
+          if (location.pathname === "/") {
+            navigate(`products/${category}/${id}`);
+          } else if (location.pathname === `/products`) {
+            navigate(`${category}/${id}`);
+          } else {
+            navigate(`${id}`);
+          }
+        }}
       >
         <img className="w-full h-full" src={img} alt={name} />
       </div>

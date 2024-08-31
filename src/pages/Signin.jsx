@@ -15,15 +15,16 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 export default function SigninPage() {
   const { user } = useSelector((state) => state.auth);
-  // console.log(user.authUser);
+  console.log(user.authUser);
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(location.state.pathname);
-  const prevPathname = location.state.pathname;
+  console.log(location);
+  const prevPathname = location.state?.pathname || "/";
+  // location.pathname
 
   useEffect(() => {
     if (user.authUser) {
-      navigate(prevPathname);
+      navigate(prevPathname, { replace: true });
     }
   }, [user.authUser, navigate, prevPathname]);
 
@@ -94,7 +95,9 @@ export default function SigninPage() {
               fullWidth
               className="border border-black text-white-100"
               id="signin"
-              onClick={() => dispatch(login(values))}
+              onClick={() => {
+                dispatch(login(values));
+              }}
             >
               Sign In
             </Button>

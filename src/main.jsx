@@ -30,8 +30,16 @@ const router = createBrowserRouter(
       <Route path="signin" element={<Signin />} />
       <Route path=":id" element={<SingleProduct />} />
 
+      <Route path="products" element={<Products />} />
       <Route path="products/:category" element={<Products />} />
-      <Route path="products/:category/:id" element={<SingleProduct />} />
+      <Route path="products/:categoryId/:id" element={<SingleProduct />} />
+
+      <Route
+        path="*"
+        element={
+          <h1 className="px-4 text-xl">Sorry, No pages with this link found</h1>
+        }
+      />
     </Route>
   )
 );
