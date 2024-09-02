@@ -11,7 +11,7 @@
 2-** Make it Responsive.
 3-** Change the Desiang (the form, color and the logo if you can).
 
-1- Animate the Upove navbar to shrink the height and padding after like 3 seconds.
+1- Animate the Apove navbar to shrink the height and padding after like 3 seconds.
 2- Add search.
 3- Add pagination (not so important for the current time).
 4- Change the data to a real back-end and uplaod it on the firebase

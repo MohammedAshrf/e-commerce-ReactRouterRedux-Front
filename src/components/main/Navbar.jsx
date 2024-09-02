@@ -1,6 +1,6 @@
 import Home from "../../assets/SVGs/Home.jsx";
 import tag from "../../assets/SVGs/tag.jsx";
-import Heart from "../../assets/SVGs/heart.jsx";
+import Heart from "../../assets/SVGs/Heart.jsx";
 import ShoppingBag from "../../assets/SVGs/ShoppingBag.jsx";
 import Person from "../../assets/SVGs/Person.jsx";
 import Logo from "../../assets/images/storeLogo1.png";
@@ -15,19 +15,48 @@ import {
   MenuList,
 } from "@material-tailwind/react";
 import { logout } from "../../store/slices/auth/AuthSlice.jsx";
+import { useState } from "react";
+import { clearWishList } from "../../store/slices/WishListSlice.jsx";
 
 export default function Navbar() {
   const dispatch = useDispatch();
   const { totalAmount } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.auth);
   // console.log(user.authUser);
+  const [heightNumber, setHeightNumber] = useState(55);
+  const [paddingNumber, setPaddingNumber] = useState(3);
+
+  // function animatingApoveNavbar() {
+  //   console.log("good");
+  // }
+  // animatingApoveNavbar();
+
+  // const countDown = () => {};
+  // function elapsingnumbers() {
+  //   setInterval(() => {
+  //     setHeightNumber((prev) => prev - 1);
+  //     setPaddingNumber((prev) => prev - 1);
+  //     console.log(heightNumber);
+  //   }, 1000);
+  // }
+  // countDown();
+  // elapsingnumbers();
+
+  // if (heightNumber === 0 && paddingNumber === 0) {
+  //   clearInterval(elapsingnumbers);
+  // }
 
   return (
     <>
-      <div className="w-full h-12 bg-black text-white-100 text-center py-2 text-xl font-bold">
+      <div
+        // id="apoveNavbar"
+        className={`w-full h-12 bg-black text-white-100 text-center py-${paddingNumber} 
+        text-xl font-bold`}
+        style={{ height: heightNumber + "px" }}
+      >
         Happy Shopping!
       </div>
-      <div className="flex justify-between px-24 h-20	overflow-hidden">
+      <div className="flex justify-between px-24 h-22	overflow-hidden">
         <div className="flex justify-between items-center cursor-pointer">
           <Link to="/" className="w-44 h-24">
             <img src={Logo} alt="logo" className="w-fit h-fit" />
@@ -96,7 +125,10 @@ export default function Navbar() {
                 <MenuList className="bg-white-100 p-2">
                   <MenuItem
                     className="text-black font-bold"
-                    onClick={() => dispatch(logout())}
+                    onClick={() => {
+                      dispatch(logout());
+                      dispatch(clearWishList());
+                    }}
                   >
                     Log out
                   </MenuItem>

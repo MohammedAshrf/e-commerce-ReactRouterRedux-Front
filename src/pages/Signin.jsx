@@ -15,10 +15,10 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 export default function SigninPage() {
   const { user } = useSelector((state) => state.auth);
-  console.log(user.authUser);
+  // console.log(user.authUser);
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(location);
+  // console.log(location);
   const prevPathname = location.state?.pathname || "/";
   // location.pathname
 
@@ -36,7 +36,7 @@ export default function SigninPage() {
   };
 
   const [values, setValues] = useState(initialValues);
-  console.log(values);
+  // console.log(values);
   const dispatch = useDispatch();
 
   function handleChange(e) {

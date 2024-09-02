@@ -5,6 +5,7 @@ import { ThemeProvider } from "@material-tailwind/react";
 import {
   createBrowserRouter,
   createRoutesFromElements,
+  Outlet,
   Route,
   RouterProvider,
 } from "react-router-dom";
@@ -22,17 +23,28 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Navbar />}>
       <Route index element={<Home />} />
+      <Route path="signin" element={<Signin />} />
 
       <Route element={<IsAuthorized />}>
-        <Route path="wish_list" element={<WishList />} />
+        <Route path="wish_list" element={<Outlet />}>
+          <Route index element={<WishList />} />
+          <Route path=":category/:id" element={<SingleProduct />} />
+        </Route>
       </Route>
 
-      <Route path="signin" element={<Signin />} />
-      <Route path=":id" element={<SingleProduct />} />
+      <Route path="products" element={<Outlet />}>
+        <Route index element={<Products />} />
+        <Route path=":category" element={<Outlet />}>
+          <Route index element={<Products />} />
+          <Route path=":id" element={<SingleProduct />} />
+        </Route>
+      </Route>
 
-      <Route path="products" element={<Products />} />
+      {/* <Route path=":id" element={<SingleProduct />} /> */}
+      {/* <Route path="products" element={<Products />} />
       <Route path="products/:category" element={<Products />} />
       <Route path="products/:categoryId/:id" element={<SingleProduct />} />
+      <Route path="wish_list/:categoryId/:id" element={<SingleProduct />} /> */}
 
       <Route
         path="*"

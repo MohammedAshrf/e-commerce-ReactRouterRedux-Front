@@ -19,6 +19,4 @@ function Home() {
   );
 }
 
-// <h1 className="text-3xl underline font-medium font-['inter']">Hello world!</h1>;
-
 export default Home;

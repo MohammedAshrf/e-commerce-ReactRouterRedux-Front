@@ -37,7 +37,7 @@ export default function Products() {
                   hover:bg-black hover:text-white-100 cursor-pointer
                   ${isActive ? "bg-black text-white-100" : ""}`
                 }
-                to={`../products/${button}`}
+                to={`/products/${button}`}
               >
                 {button}
               </NavLink>

@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import GoBackArrow from "../assets/SVGs/GoBackArrow";
 import { Tooltip, Button } from "@material-tailwind/react";
 import { addToCart } from "../store/slices/CartSlice";
@@ -12,12 +12,16 @@ export default function SingleProduct() {
   const dispatch = useDispatch();
   const [selectedSize, setSelectedSize] = useState();
   const [selectedColor, setSelectedColor] = useState();
+  const location = useLocation();
 
   const theSingleProduct = data.find((product) => product.id === id);
 
-  const backnavigation = category ? `../products/${category}` : `..`;
+  // const backnavigation = category ? `../products/${category}` : `..`;
+  const backnavigation = "..";
 
-  const backstatement = category ? "Back to all products" : "Back to Home page";
+  const backstatement = location.pathname
+    ? "Back to " + location.pathname
+    : "Back to  " + location.pathname;
 
   return (
     <>
