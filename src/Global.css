@@ -5,11 +5,28 @@
 }
 
 /* Start Apove navbar */
-/* #apoveNavbar {} */
-/* @keyframes identifier {
-  #apoveNavbar {}
+#apoveNavbar {
+  animation-name: shrinkingAboveNavbar;
+  animation-duration: 6s;
+}
 
-} */
+
+@keyframes shrinkingAboveNavbar {
+  20% {
+    height: 55px;
+    padding: 10px 0px;
+  }
+
+  80% {
+    height: 55px;
+    padding: 10px 0px;
+  }
+
+  /* 20% {
+    height: 0px;
+    padding: 0px;
+  } */
+}
 
 /* End Apove navbar */
 

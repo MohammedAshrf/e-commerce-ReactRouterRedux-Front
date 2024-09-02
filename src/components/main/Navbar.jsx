@@ -15,7 +15,7 @@ import {
   MenuList,
 } from "@material-tailwind/react";
 import { logout } from "../../store/slices/auth/AuthSlice.jsx";
-import { useState } from "react";
+// import { useState } from "react";
 import { clearWishList } from "../../store/slices/WishListSlice.jsx";
 
 export default function Navbar() {
@@ -23,8 +23,8 @@ export default function Navbar() {
   const { totalAmount } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.auth);
   // console.log(user.authUser);
-  const [heightNumber, setHeightNumber] = useState(55);
-  const [paddingNumber, setPaddingNumber] = useState(3);
+  // const [heightNumber, setHeightNumber] = useState(55);
+  // const [paddingNumber, setPaddingNumber] = useState(3);
 
   // function animatingApoveNavbar() {
   //   console.log("good");
@@ -49,10 +49,10 @@ export default function Navbar() {
   return (
     <>
       <div
-        // id="apoveNavbar"
-        className={`w-full h-12 bg-black text-white-100 text-center py-${paddingNumber} 
+        id="apoveNavbar"
+        className={`w-full h-12 bg-black text-white-100 text-center py-${0} 
         text-xl font-bold`}
-        style={{ height: heightNumber + "px" }}
+        style={{ height: 0 + "px" }}
       >
         Happy Shopping!
       </div>
