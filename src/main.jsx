@@ -9,8 +9,8 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
-import Navbar from "./components/main/Navbar.jsx";
-import Home from "./Home.jsx";
+// import Navbar from "./components/main/Navbar.jsx";
+import Home from "./pages/Home.jsx";
 import { Provider } from "react-redux";
 import { store } from "./store/store.js";
 import Products from "./pages/Products.jsx";
@@ -18,10 +18,11 @@ import SingleProduct from "./pages/SingleProduct.jsx";
 import WishList from "./pages/WishList.jsx";
 import Signin from "./pages/Signin.jsx";
 import IsAuthorized from "./components/auth/isAuthorized.jsx";
+import App from "./App.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<Navbar />}>
+    <Route path="/" element={<App />}>
       <Route index element={<Home />} />
       <Route path="signin" element={<Signin />} />
 

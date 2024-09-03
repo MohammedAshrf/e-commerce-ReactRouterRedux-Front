@@ -16,7 +16,7 @@ export default function SecondNavbar() {
   return (
     <>
       <div className="flex flex-col items-center gap-4 mb-8">
-        <div className="flex justify-center gap-4 mb-2">
+        <div className="flex flex-wrap justify-center gap-4 mb-2">
           {categories.map((button) => {
             return (
               <Link
@@ -34,8 +34,8 @@ export default function SecondNavbar() {
           Sales Up to 50%
         </h2>
         <img
-          style={{ height: "400px" }}
-          className="rounded-lg w-11/12"
+          // style={{ height: "400px" }}
+          className="clothes image rounded-lg w-11/12"
           src={Clothes}
           alt="clothes image"
         />

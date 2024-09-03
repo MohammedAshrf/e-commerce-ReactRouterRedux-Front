@@ -21,11 +21,6 @@
     height: 55px;
     padding: 10px 0px;
   }
-
-  /* 20% {
-    height: 0px;
-    padding: 0px;
-  } */
 }
 
 /* End Apove navbar */
@@ -49,6 +44,13 @@
 }
 
 /* End Slider Component */
+
+/* Start second nanvar */
+/* @media {min-width:  } {
+  
+} */
+
+/* End second nanvar */
 
 /* Start Products Page */
 #menuHandler {

@@ -1,8 +1,9 @@
 /* eslint-disable no-undef */
-/* @type {import('tailwindcss').Config} */
+/** @type {import('tailwindcss').Config} */
 
 const withMT = require("@material-tailwind/react/utils/withMT");
 const colors = require("tailwindcss/colors");
+const defaultTheme = require("tailwindcss/defaultTheme");
 
 export default withMT({
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
@@ -23,6 +24,10 @@ export default withMT({
         75: "rgb(255 252 236 / 66%)",
         100: "rgb(255 252 236)",
       },
+    },
+    screens: {
+      xs: "300px",
+      ...defaultTheme.screens,
     },
   },
   extend: {},

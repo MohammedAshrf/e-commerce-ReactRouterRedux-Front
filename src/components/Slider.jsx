@@ -41,7 +41,7 @@ export default function Slider() {
             {RightArrow}
           </div>
           <h2
-            className="absolute text-white-100 z-10 top-1/4 text-4xl font-serif"
+            className="absolute text-white-100 z-10 top-1/4 text-xl sm:text-3xl lg:text-4xl font-serif"
             style={{ left: "10.5%" }}
           >
             {sliderData[sliderIndex].text}
@@ -56,11 +56,11 @@ export default function Slider() {
                 return (
                   <div
                     key={bullet.id}
-                    className={
+                    className={`rounded-full h-4 w-4 sm:h-5 sm:w-5 cursor-pointer ${
                       parseInt(bullet.id) === sliderIndex
-                        ? "bg-green-300 rounded-full h-5 w-5 cursor-pointer"
-                        : "bg-white-100 rounded-full h-5 w-5 cursor-pointer"
-                    }
+                        ? "bg-green-300"
+                        : "bg-white-100"
+                    }`}
                     onClick={() => dispatch(slideBullets(parseInt(bullet.id)))}
                   ></div>
                 );

@@ -27,7 +27,7 @@ export default function Products() {
   return (
     <>
       <div className="pb-4">
-        <div className="flex justify-center gap-4 mb-2">
+        <div className="flex justify-center gap-4 mb-2 sm:flex-wrap sm:my-4">
           {categories.map((button) => {
             return (
               <NavLink
