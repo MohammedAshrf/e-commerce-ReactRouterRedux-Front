@@ -36,7 +36,7 @@ export default function ShoppingBag() {
               : cart.map((product) => {
                   return (
                     <div key={product.id + product.size + product.color}>
-                      <div className="flex items-center  py-4">
+                      <div className="flex flex-col sm:flex-row items-center py-4">
                         <div className="basis-1/3 ps-4">
                           <img
                             src={product.img}
@@ -45,10 +45,10 @@ export default function ShoppingBag() {
                           />
                         </div>
                         <div className="ps-4 basis-2/3">
-                          <h2 className="pb-2 text-2xl text-black font-serif font-bold">
+                          <h2 className="text-center sm:text-start pb-2 text-2xl text-black font-serif font-bold">
                             {product.name}
                           </h2>
-                          <div className="text-gray-900 flex justify-between pb-1">
+                          <div className="text-gray-900 flex justify-between pb-2">
                             Amount:
                             <span className="basis-1/2 ps-6 flex items-center gap-6">
                               <p
@@ -98,20 +98,20 @@ export default function ShoppingBag() {
                               ></span>
                             </span>
                           </p>
-                          <p className="text-gray-900 flex justify-between pb-1">
+                          <p className="flex justify-between text-gray-900 pb-1">
                             Single Item Price:
-                            <span className="basis-1/2 ps-6">
+                            <span className="basis-1/2 ps-3 sm:ps-6 mt-auto">
                               {product.price}
                             </span>
                           </p>
                           <p className="text-gray-900 flex justify-between pb-1">
                             Total Item Price:
-                            <span className="basis-1/2 ps-6">
+                            <span className="basis-1/2 ps-3 sm:ps-6 mt-auto">
                               {product.price * product.amount}
                             </span>
                           </p>
                           <Button
-                            className="mt-2"
+                            className="w-full sm:w-fit mt-2"
                             variant="gradient"
                             color="red"
                             onClick={() => dispatch(removeFromCart(product))}

@@ -7,7 +7,8 @@ import { useState } from "react";
 
 export default function SingleProduct() {
   const { data } = useSelector((state) => state.products);
-  const { category, id } = useParams();
+  const { id } = useParams();
+  // category
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [selectedSize, setSelectedSize] = useState();
@@ -33,11 +34,11 @@ export default function SingleProduct() {
         >
           {GoBackArrow} {backstatement}
         </div>
-        <div className="px-12 flex flex-wrap gap-12 items-center  justify-center">
+        <div className="flex items-center justify-center gap-12 px-12">
           {theSingleProduct && (
             <div
               key={theSingleProduct.id}
-              className="flex border-black border rounded-md"
+              className="flex flex-col md:flex-row items-center border-black border rounded-md"
               style={{ gap: "8%" }}
             >
               <div
@@ -51,20 +52,28 @@ export default function SingleProduct() {
                   alt={theSingleProduct.name}
                 />
               </div>
-              <div className="w-1/2 flex flex-col items-start justify-center gap-2">
-                <h2 className="text-center text-xl mb-1 font-bold">
+              <div
+                className="w-full md:w-1/2 flex flex-col items-start
+                   justify-center gap-2 text-center"
+              >
+                <h2 className="w-full text-center text-xl mb-1 font-bold">
                   {theSingleProduct.name}
                 </h2>
-                <p className="font-bold text-red-800">15% OFF</p>
-                <p className="text-start text-sm text-gray-600 font-normal">
+                <p className="w-full text-center font-bold text-red-800">
+                  15% OFF
+                </p>
+                <p
+                  className="w-full text-center md:text-start text-sm text-gray-600 
+                    ont-normal px-4 md:px-0"
+                >
                   {theSingleProduct.text}
                 </p>
                 {theSingleProduct.size && (
-                  <div className="w-full max-w-sm min-w-[200px]">
+                  <div className="w-10/12 m-auto md:w-full min-w-[200px]">
                     <label className="block mb-1 text-sm text-slate-800">
                       Pick a size
                     </label>
-                    <div className="relative">
+                    <div className="relative w-10/12 m-auto">
                       <select
                         className="w-full h-10 bg-transparent 
                                 placeholder:text-slate-400 text-slate-700
@@ -102,11 +111,11 @@ export default function SingleProduct() {
                   </div>
                 )}
 
-                <div className="w-full max-w-sm min-w-[200px]">
+                <div className="w-10/12 m-auto md:w-full min-w-[200px]">
                   <label className="block mb-1 text-sm text-slate-800">
                     Select a Color
                   </label>
-                  <div className="relative">
+                  <div className="relative w-10/12 m-auto">
                     <select
                       className="w-full h-10 bg-transparent 
                                 placeholder:text-slate-400 text-slate-700
@@ -150,7 +159,7 @@ export default function SingleProduct() {
                   className="bg-white text-white border border-gray border-2"
                 >
                   <Button
-                    className="my-2"
+                    className="my-2 mx-auto"
                     color="black"
                     variant="outlined"
                     size="md"

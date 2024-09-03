@@ -35,7 +35,7 @@ export default function SecondNavbar() {
         </h2>
         <img
           // style={{ height: "400px" }}
-          className="clothes image rounded-lg w-11/12"
+          className="clothes-image rounded-lg w-11/12"
           src={Clothes}
           alt="clothes image"
         />

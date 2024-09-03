@@ -27,7 +27,7 @@ export default function Products() {
   return (
     <>
       <div className="pb-4">
-        <div className="flex justify-center gap-4 mb-2 sm:flex-wrap sm:my-4">
+        <div className="flex justify-center gap-4 mb-2 flex-wrap sm:my-4">
           {categories.map((button) => {
             return (
               <NavLink
@@ -44,10 +44,10 @@ export default function Products() {
             );
           })}
         </div>
-        <h1 className="text-5xl ps-8 font-serif font-bold">
+        <h1 className="text-4xl sm:text-5xl my-4 sm:my-0 ps-8 font-serif font-bold">
           {category ? category : "All Products"}
         </h1>
-        <div className="flex justify-start gap-4 mb-2 ps-8 py-4">
+        <div className="flex justify-start gap-4 flex-wrap sm:nowrap mb-2 ps-8 py-4">
           {filters.map((button) => {
             return button !== "Select a color" && button !== "Select a size" ? (
               <button
