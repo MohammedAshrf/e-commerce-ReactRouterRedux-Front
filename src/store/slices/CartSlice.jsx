@@ -15,16 +15,13 @@ const cartSlice = createSlice({
   },
   reducers: {
     addToCart(state, action) {
-      // console.log(action.payload);
       const newProduct = action.payload;
-      console.log(newProduct.amount);
       const existNewProduct = state.cart.find(
         (product) =>
           product.id === newProduct.id &&
           product.size === newProduct.size &&
           product.color === newProduct.color
       );
-      // console.log(existNewProduct ? true : false);
       if (existNewProduct) {
         existNewProduct.amount++;
         state.totalAmount += newProduct.amount;
@@ -43,8 +40,6 @@ const cartSlice = createSlice({
     },
     removeFromCart(state, action) {
       const thisProduct = action.payload;
-      // console.log("Removing product:", thisProduct);
-
       if (thisProduct) {
         const findThisProduct = state.cart.find(
           (product) =>
@@ -67,7 +62,6 @@ const cartSlice = createSlice({
       localStorage.setItem("open", state.open);
     },
     changeAmount(state, action) {
-      console.log(action.payload);
       const thisProduct = action.payload;
 
       const findThisProduct = state.cart.find(

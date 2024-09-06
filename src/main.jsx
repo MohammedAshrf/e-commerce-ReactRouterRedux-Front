@@ -40,12 +40,6 @@ const router = createBrowserRouter(
         </Route>
       </Route>
 
-      {/* <Route path=":id" element={<SingleProduct />} /> */}
-      {/* <Route path="products" element={<Products />} />
-      <Route path="products/:category" element={<Products />} />
-      <Route path="products/:categoryId/:id" element={<SingleProduct />} />
-      <Route path="wish_list/:categoryId/:id" element={<SingleProduct />} /> */}
-
       <Route
         path="*"
         element={

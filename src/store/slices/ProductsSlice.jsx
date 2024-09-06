@@ -46,10 +46,7 @@ const ProductsSlice = createSlice({
   },
   reducers: {
     productsFilter(state, action) {
-      // console.log(action.payload);
-
       if (action.payload === "Male") {
-        console.log(action.payload);
         state.data = state.data.filter((product) => product.gender === "male");
       }
       if (action.payload === "Female") {
@@ -65,20 +62,17 @@ const ProductsSlice = createSlice({
       }
 
       if (action.payload.filterType === "Select a color") {
-        // console.log(action.payload);
         state.data = state.data.filter((product) =>
           product.color.find((color) => color === action.payload.value)
         );
       }
       if (action.payload.filterType === "Select a size") {
-        // console.log(action.payload);
         state.data = state.data.filter((product) =>
           product.size?.find((size) => size === action.payload.value)
         );
       }
 
       if (action.payload) {
-        console.log(action.payload);
         if (!state.filters.includes("Clear Filter")) {
           state.filters = ["Clear Filter", ...state.filters];
           localStorage.setItem("savedFilters", JSON.stringify(state.filters));

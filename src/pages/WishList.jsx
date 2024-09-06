@@ -3,7 +3,6 @@ import ProductCard from "../components/main/Card";
 
 export default function WishList() {
   const { wishListData } = useSelector((state) => state.wishList);
-  // console.log(wishListData);
 
   return (
     <>

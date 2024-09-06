@@ -16,10 +16,9 @@ export default function ProductCard({
 }) {
   const navigate = useNavigate();
   const location = useLocation();
-  // console.log(location);
   const dispatch = useDispatch();
+
   const { wishListData } = useSelector((state) => state.wishList);
-  // console.log(wishListData);
 
   let addedProduct = wishListData.find((item) => item.id === id);
 

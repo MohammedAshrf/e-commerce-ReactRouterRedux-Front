@@ -9,11 +9,9 @@ const sliderSlice = createSlice({
   },
   reducers: {
     nextSlide(state, action) {
-      console.log(action.payload);
       state.value = action.payload > state.length - 1 ? 0 : action.payload;
     },
     prevSlide(state, action) {
-      console.log("action ===> " + action.payload);
       state.value = action.payload < 0 ? state.length - 1 : action.payload;
     },
     slideBullets(state, action) {

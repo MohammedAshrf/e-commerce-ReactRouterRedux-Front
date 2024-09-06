@@ -15,11 +15,10 @@ export default function Products() {
   const { categories, filters, data, colors, sizes } = useSelector(
     (state) => state.products
   );
-  // console.log(data);
+
   const dispatch = useDispatch();
 
   const finalFilteredData = data.filter((product) => product.type === category);
-  // console.log(finalFilteredData);
 
   // == Category check == //
   const allProducts = category ? finalFilteredData : data;

@@ -22,7 +22,6 @@ export default function Navbar() {
   const dispatch = useDispatch();
   const { totalAmount } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.auth);
-  // console.log(user.authUser);
 
   return (
     <>

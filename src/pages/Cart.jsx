@@ -15,7 +15,6 @@ import {
 export default function ShoppingBag() {
   const { cart, open, totalPrice } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
-  // console.log(cart);
 
   return (
     <>

@@ -10,7 +10,6 @@ const wishListSlider = createSlice({
   },
   reducers: {
     toWishList(state, action) {
-      console.log(action.payload);
       const productId = action.payload;
       let findProduct = storeData.find((item) => item.id === productId);
       let existProduct = state.wishListData.find(

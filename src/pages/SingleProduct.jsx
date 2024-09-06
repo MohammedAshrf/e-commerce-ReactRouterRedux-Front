@@ -41,7 +41,6 @@ export default function SingleProduct() {
               <div
                 className="w-1/3 mb-4 rounded-lg overflow-hidden 
                   shadow-2xl m-2"
-                onClick={() => console.log("singleProduct")}
               >
                 <img
                   className="w-full h-full"
