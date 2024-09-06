@@ -23,7 +23,6 @@ export default function Navbar() {
   const { totalAmount } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.auth);
   // console.log(user.authUser);
-  // const [displayList, setDisplayList] = useState(true);
 
   return (
     <>
@@ -36,8 +35,8 @@ export default function Navbar() {
         Happy Shopping!
       </div>
       <div
-        className="flex justify-between items-center px-16 sm:px-24 h-22 overflow-hidden
-          lg:flex-row sm:flex-col flex-col"
+        className="flex justify-between items-center px-16 sm:px-24 h-30 sm:h-22 overflow-hidden
+          lg:flex-row sm:flex-col flex-col drop-shadow-lg"
       >
         <div
           className="flex items-center cursor-pointer
@@ -99,7 +98,7 @@ export default function Navbar() {
               </NavLink>
             </MenuItem>
             <MenuItem className="text-black font-bold">
-              <button
+              <div
                 onClick={() => dispatch(handleOpen())}
                 className="flex items-center gap-1 py-1 px-4"
               >
@@ -111,7 +110,7 @@ export default function Navbar() {
                   ShoppingBag
                 )}
                 Shopping bag
-              </button>
+              </div>
             </MenuItem>
             <MenuItem className="text-black font-bold">
               {user.authUser ? (
@@ -149,15 +148,15 @@ export default function Navbar() {
         </Menu>
         <div className={`hidden sm:flex justify-between items-center`}>
           <ul
-            className={`flex items-center gap-6 flex-wrap justify-center 
-            sm:justify-between mb-0 sm:mb-2 lg:mb-0`}
+            className={`flex items-center gap-4 lg:gap-2 flex-wrap justify-center 
+             mb-0 sm:mb-2 lg:mb-0`}
           >
             <NavLink
               to="/"
               className={({ isActive }) =>
                 isActive
-                  ? "bg-gray-300 py-2 px-6 rounded-xl flex gap-1"
-                  : "flex gap-1"
+                  ? "bg-gray-300 hover:bg-gray-200 py-2 px-2 rounded-xl flex gap-1"
+                  : "hover:bg-gray-200 py-2 px-2 rounded-xl flex gap-1"
               }
             >
               {Home}
@@ -167,8 +166,8 @@ export default function Navbar() {
               to="/products"
               className={({ isActive }) =>
                 isActive
-                  ? "bg-gray-300 py-2 px-6 rounded-xl flex gap-1"
-                  : "flex gap-1"
+                  ? "bg-gray-300 hover:bg-gray-200 py-2 px-2 rounded-xl flex gap-1"
+                  : "hover:bg-gray-200 py-2 px-2 rounded-xl flex gap-1"
               }
             >
               {tag}
@@ -178,8 +177,8 @@ export default function Navbar() {
               to="wish_list"
               className={({ isActive }) =>
                 isActive
-                  ? "bg-gray-300 py-2 px-6 rounded-xl flex gap-1"
-                  : "flex gap-1"
+                  ? "bg-gray-300 hover:bg-gray-200 py-2 px-2 rounded-xl flex gap-1"
+                  : "hover:bg-gray-200 py-2 px-2 rounded-xl flex gap-1"
               }
             >
               {Heart}
@@ -187,7 +186,7 @@ export default function Navbar() {
             </NavLink>
             <button
               onClick={() => dispatch(handleOpen())}
-              className="flex items-center gap-1"
+              className="flex items-center gap-1 hover:bg-gray-200 py-2 px-2 rounded-xl"
             >
               {totalAmount > 0 ? (
                 <span className="text-lg bg-gray-300 px-3 py-px rounded-full">
@@ -201,7 +200,10 @@ export default function Navbar() {
             {user.authUser ? (
               <Menu>
                 <MenuHandler>
-                  <div className="flex items-center gap-3 cursor-pointer">
+                  <div
+                    className="flex items-center gap-3 cursor-pointer hover:bg-gray-200
+                        py-2 px-4 rounded-xl"
+                  >
                     <img
                       className="w-10 h-10 rounded-full"
                       src={user.image}
@@ -223,7 +225,11 @@ export default function Navbar() {
                 </MenuList>
               </Menu>
             ) : (
-              <Link to="signin" className="flex gap-1">
+              <Link
+                to="signin"
+                className="flex gap-1 hover:bg-gray-200
+                py-2 px-2 rounded-xl"
+              >
                 {Person}
                 Sign in
               </Link>

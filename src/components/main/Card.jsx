@@ -16,7 +16,7 @@ export default function ProductCard({
 }) {
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(location);
+  // console.log(location);
   const dispatch = useDispatch();
   const { wishListData } = useSelector((state) => state.wishList);
   // console.log(wishListData);

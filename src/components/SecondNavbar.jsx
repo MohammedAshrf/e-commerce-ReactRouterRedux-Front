@@ -34,8 +34,8 @@ export default function SecondNavbar() {
           Sales Up to 50%
         </h2>
         <img
-          // style={{ height: "400px" }}
-          className="clothes-image rounded-lg w-11/12"
+          className="clothes-image h-[250px] sm:h-[350px] md:h-[450px]
+          lg:h-[550px] rounded-lg w-11/12"
           src={Clothes}
           alt="clothes image"
         />

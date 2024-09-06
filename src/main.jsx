@@ -9,7 +9,6 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
-// import Navbar from "./components/main/Navbar.jsx";
 import Home from "./pages/Home.jsx";
 import { Provider } from "react-redux";
 import { store } from "./store/store.js";

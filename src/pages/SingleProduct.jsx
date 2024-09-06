@@ -8,7 +8,6 @@ import { useState } from "react";
 export default function SingleProduct() {
   const { data } = useSelector((state) => state.products);
   const { id } = useParams();
-  // category
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [selectedSize, setSelectedSize] = useState();
@@ -17,12 +16,10 @@ export default function SingleProduct() {
 
   const theSingleProduct = data.find((product) => product.id === id);
 
-  // const backnavigation = category ? `../products/${category}` : `..`;
   const backnavigation = "..";
 
-  const backstatement = location.pathname
-    ? "Back to " + location.pathname
-    : "Back to  " + location.pathname;
+  const backstatement =
+    "Go to " + location.pathname.split("/")[2] + " category";
 
   return (
     <>

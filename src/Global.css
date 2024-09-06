@@ -45,25 +45,6 @@
 
 /* End Slider Component */
 
-/* Start second nanvar */
-.clothes-image {
-  height: 400px;
-}
-
-@media (max-width: 640px) {
-  .clothes-image {
-    height: 300px;
-  }
-}
-
-@media (max-width: 400px) {
-  .clothes-image {
-    height: 200px;
-  }
-}
-
-/* End second nanvar */
-
 /* Start Products Page */
 #menuHandler {
   box-shadow: none;

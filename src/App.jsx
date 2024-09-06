@@ -5,7 +5,7 @@ import Navbar from "./components/main/Navbar";
 export default function App() {
   return (
     <>
-      <div className="flex flex-col gap-4 h-screen">
+      <div className="flex flex-col gap-4 lg:gap-0 h-screen">
         <div className="grow-0">
           <Navbar />
         </div>
