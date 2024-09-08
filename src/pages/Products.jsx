@@ -1,6 +1,6 @@
 import { NavLink, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { productsFilter } from "../store/slices/ProductsSlice";
+import { fetchProducts, productsFilter } from "../store/slices/ProductsSlice";
 import {
   Menu,
   MenuHandler,
@@ -9,19 +9,35 @@ import {
   Button,
 } from "@material-tailwind/react";
 import ProductCard from "../components/main/Card";
+import { useEffect } from "react";
 
 export default function Products() {
   const { category } = useParams();
-  const { categories, filters, data, colors, sizes } = useSelector(
+  const { categories, filters, data, colors, sizes, status } = useSelector(
     (state) => state.products
   );
-
   const dispatch = useDispatch();
 
   const finalFilteredData = data.filter((product) => product.type === category);
-
   // == Category check == //
   const allProducts = category ? finalFilteredData : data;
+
+  useEffect(() => {
+    if (status === "idle") {
+      dispatch(fetchProducts());
+    }
+  }, [dispatch, status]);
+
+  if (status === "loading") {
+    return (
+      <div className="text-xl font-bold ms-[30px] mt-[30px]">Loading...</div>
+    );
+  }
+
+  if (status === "failed") {
+    return <div>Error fetching products</div>;
+  }
+  console.log(data);
 
   return (
     <>
