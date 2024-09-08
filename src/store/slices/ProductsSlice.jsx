@@ -111,7 +111,7 @@ const ProductsSlice = createSlice({
       })
       .addCase(fetchProducts.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.data = savedData ? savedData : action.payload.products;
+        state.data = savedData ? savedData : action.payload;
         localStorage.setItem("savedData", JSON.stringify(state.data));
       })
       .addCase(fetchProducts.rejected, (state, action) => {

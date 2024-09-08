@@ -37,7 +37,6 @@ export default function Products() {
   if (status === "failed") {
     return <div>Error fetching products</div>;
   }
-  console.log(data);
 
   return (
     <>
