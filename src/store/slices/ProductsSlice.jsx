@@ -1,18 +1,29 @@
 /* eslint-disable react-refresh/only-export-components */
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { storeData } from "../../assets/data/dummyData";
-import { APIstoreData } from "../APIdata";
+// import { APIstoreData } from "../APIdata";
+import { db } from "../../firebaseConfig";
+import { collection, getDocs } from "firebase/firestore";
 
-export const fetchProducts = createAsyncThunk(
-  "products/fetchProducts",
+// export const fetchProducts = createAsyncThunk(
+//   "products/fetchProducts",
+//   async () => {
+//     try {
+//       const data = await APIstoreData();
+//       return data;
+//     } catch (error) {
+//       console.error("Error fetching products:", error);
+//       throw error;
+//     }
+//   }
+// );
+
+export const firebaseProducts = createAsyncThunk(
+  "products/firebaseProducts",
   async () => {
-    try {
-      const data = await APIstoreData();
-      return data;
-    } catch (error) {
-      console.error("Error fetching products:", error);
-      throw error;
-    }
+    const productsCollectionRef = collection(db, "products");
+    const data = await getDocs(productsCollectionRef);
+    return data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
   }
 );
 
@@ -106,15 +117,16 @@ const ProductsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchProducts.pending, (state) => {
+      .addCase(firebaseProducts.pending, (state) => {
         state.status = "loading";
       })
-      .addCase(fetchProducts.fulfilled, (state, action) => {
+      .addCase(firebaseProducts.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.data = savedData ? savedData : action.payload;
+        console.log(action.payload);
         localStorage.setItem("savedData", JSON.stringify(state.data));
       })
-      .addCase(fetchProducts.rejected, (state, action) => {
+      .addCase(firebaseProducts.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
       });

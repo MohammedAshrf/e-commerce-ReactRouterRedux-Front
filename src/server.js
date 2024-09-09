@@ -498,6 +498,7 @@ export function makeServer({ environment = "test" } = {}) {
 
     routes() {
       this.namespace = "api";
+      this.passthrough("https://firestore.googleapis.com/**");
 
       this.get("/products", (schema) => {
         return schema.products.all();
