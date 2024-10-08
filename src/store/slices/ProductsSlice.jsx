@@ -5,6 +5,7 @@ import { storeData } from "../../assets/data/dummyData";
 import { db } from "../../firebaseConfig";
 import { collection, getDocs } from "firebase/firestore";
 
+// === fetching data from mirageJS === //
 // export const fetchProducts = createAsyncThunk(
 //   "products/fetchProducts",
 //   async () => {
@@ -22,8 +23,13 @@ export const firebaseProducts = createAsyncThunk(
   "products/firebaseProducts",
   async () => {
     const productsCollectionRef = collection(db, "products");
-    const data = await getDocs(productsCollectionRef);
-    return data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+    try {
+      const data = await getDocs(productsCollectionRef);
+      return data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      throw error;
+    }
   }
 );
 
@@ -123,7 +129,6 @@ const ProductsSlice = createSlice({
       .addCase(firebaseProducts.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.data = savedData ? savedData : action.payload;
-        console.log(action.payload);
         localStorage.setItem("savedData", JSON.stringify(state.data));
       })
       .addCase(firebaseProducts.rejected, (state, action) => {

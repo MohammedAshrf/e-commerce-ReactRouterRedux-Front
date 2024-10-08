@@ -18,7 +18,6 @@ import WishList from "./pages/WishList.jsx";
 import Signin from "./pages/Signin.jsx";
 import App from "./App.jsx";
 import { makeServer } from "./server";
-// import IsAuthorized from "./components/auth/IsAuthorized.jsx";
 import IsAuthorized from "./components/auth/IsAuthorized.jsx";
 
 // eslint-disable-next-line no-undef

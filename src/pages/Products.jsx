@@ -22,34 +22,18 @@ export default function Products() {
   );
   const dispatch = useDispatch();
 
-  /////////////////===================//////////////////
-
-  // const [products, setProducts] = useState([]);
-
-  // useEffect(() => {
-  //   const firebaseProducts = async () => {
-  //     const productsCollectionRef = collection(db, "products");
-  //     const data = await getDocs(productsCollectionRef);
-  //     setProducts(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-  //   };
-
-  //   firebaseProducts();
-  // }, []);
-
-  // console.log(products);
-
   useEffect(() => {
     if (status === "idle") {
       dispatch(firebaseProducts());
     }
   }, [dispatch, status]);
 
-  ////////////////===================///////////////////
-
   const finalFilteredData = data.filter((product) => product.type === category);
-  // == Category check == //
+
+  // === Category check === //
   const allProducts = category ? finalFilteredData : data;
 
+  // === dispatch for miradeJS data === //
   // useEffect(() => {
   //   if (status === "idle") {
   //     dispatch(fetchProducts());
