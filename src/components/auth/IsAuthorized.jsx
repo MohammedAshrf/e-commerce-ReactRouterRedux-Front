@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 
-const IsAuthorized = () => {
+export default function IsAuthorized() {
   const { user } = useSelector((state) => state.auth);
   const location = useLocation();
 
@@ -10,6 +10,4 @@ const IsAuthorized = () => {
   } else {
     return <Outlet />;
   }
-};
-
-export default IsAuthorized;
+}
