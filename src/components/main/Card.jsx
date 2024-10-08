@@ -2,7 +2,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { toWishList } from "../../store/slices/WishListSlice";
 import { useDispatch, useSelector } from "react-redux";
-import Heart from "../../assets/SVGs/Heart";
+import Heart from "../../assets/SVGs/Heart.jsx";
 import { Tooltip } from "@material-tailwind/react";
 
 export default function ProductCard({
