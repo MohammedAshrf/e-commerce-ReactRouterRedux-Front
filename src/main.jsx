@@ -17,7 +17,7 @@ import SingleProduct from "./pages/SingleProduct.jsx";
 import WishList from "./pages/WishList.jsx";
 import Signin from "./pages/Signin.jsx";
 // import IsAuthorized from "./components/auth/isAuthorized.jsx";
-import { IsAuthorized } from "./components/auth/isAuthorized.jsx";
+import IsAuthorized from "./components/auth/isAuthorized.jsx";
 import App from "./App.jsx";
 import { makeServer } from "./server";
 
