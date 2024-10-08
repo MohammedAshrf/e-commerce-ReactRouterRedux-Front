@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import Heart from "../../assets/SVGs/Heart.jsx";
 import { Tooltip } from "@material-tailwind/react";
 
+console.log(Heart);
+
 export default function ProductCard({
   id,
   category,
