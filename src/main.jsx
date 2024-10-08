@@ -25,11 +25,22 @@ if (process.env.NODE_ENV === "development") {
   makeServer({ environment: "development" });
 }
 
+let imageUrl = `https://firebasestorage.googleapis.com/v0/b/storedata-b21dd.appspot.com
+/o/bag1.jpg?alt=media&token=bf86f968-adb5-445a-bd99-b0909bba5d35`;
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
       <Route index element={<Home />} />
       <Route path="signin" element={<Signin />} />
+      <Route
+        path="image"
+        element={
+          <div>
+            <img className="w-[200px]" src={imageUrl} alt="try an image" />
+          </div>
+        }
+      />
 
       <Route element={<IsAuthorized />}>
         <Route path="wish_list" element={<Outlet />}>
