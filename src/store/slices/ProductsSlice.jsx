@@ -1,6 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { storeData } from "../../assets/data/dummyData";
+// import { storeData } from "../../assets/data/dummyData";
 // import { APIstoreData } from "../APIdata";
 import { db } from "../../firebaseConfig";
 import { collection, getDocs } from "firebase/firestore";
@@ -63,7 +63,7 @@ const ProductsSlice = createSlice({
   initialState: {
     categories: [
       "Hoodies",
-      "Dresses",
+      // "Dresses",
       "Shoes",
       "T-Shirts",
       "Jeans",
@@ -112,9 +112,9 @@ const ProductsSlice = createSlice({
       }
       if (action.payload === "Clear Filter") {
         state.filters = initialFilters;
-        state.data = storeData;
+        state.data = savedData;
         localStorage.setItem("savedFilters", JSON.stringify(initialFilters));
-        localStorage.setItem("savedData", JSON.stringify(storeData));
+        // localStorage.setItem("savedData", JSON.stringify(storeData));
       } else {
         localStorage.setItem("savedData", JSON.stringify(state.data));
         localStorage.setItem("savedFilters", JSON.stringify(state.filters));
@@ -129,6 +129,7 @@ const ProductsSlice = createSlice({
       .addCase(firebaseProducts.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.data = savedData ? savedData : action.payload;
+        console.log(action.payload);
         localStorage.setItem("savedData", JSON.stringify(state.data));
       })
       .addCase(firebaseProducts.rejected, (state, action) => {

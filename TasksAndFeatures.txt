@@ -1,34 +1,28 @@
+===> quick tasks:
+-> always delete the unused comments or styles.
+
 ===> Tasks:
-1- quick tasks:
-   1- Done: lower the margin or the space under the navbar.
-   2- Done: modify the statement of the back button in the single product page.
-   3- Done: the responsiveness of the clothe image make it all with twailwindCss
-      not the css, like this h-[300px].
-   4- delete the unused comments or styles.
-2- Login first before:
-   - Adding to wish list.
-   - Adding to cart.
-   - Done: Getting to wish list page.
-   - Displaying the shipping bag.
+1- Login Alert when clicking on the add to wishlist, if the user is not
+   signed in.
+2- Not adding the product to the localStorageData, if the user is not
+   signed in.
 
 ===> More feature to add:
-1-** Change bad images to good images.
-2-** Done: Make it Responsive.
-3-** Change the Design (the form, color and the logo if you can),
+1-** Dispense with usign the localStorage at all.
+2-** Update, change and improve the Design (the form, color and the logo if you can),
      spicialy of the home page.
 
-1- Animate the Apove navbar to shrink the height and padding after like 3 seconds.
-2- Add search.
-3- Add pagination (not so important for the current time).
-4- Change the data to a real back-end and uplaod it on the firebase
-   (Look at Scrimba course react or react router).
+1- Add search.
+2- Add pagination (not so important for the current time).
+3- Change bad images to good images.
 
 
 
 ===> Main Features: 
 1- Smooth navigation between website pages.
-2- Filtering products.
-3- Storing the filtered products in the local storage.
-4- Of course, shopping cart, with the ability of increasing or decreasing 
+2- Responsive design.
+3- Filtering products.
+4- Storing the filtered products in the local storage.
+5- Of course, shopping cart, with the ability of increasing or decreasing 
    the amount of the products.
-5- 
+6- Add some products to a wishlist.

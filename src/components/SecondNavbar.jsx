@@ -1,17 +1,9 @@
 import { Link } from "react-router-dom";
 import Clothes from "../assets/images/clothes.jpg";
+import { useSelector } from "react-redux";
 
 export default function SecondNavbar() {
-  const categories = [
-    "Hoodies",
-    "Dresses",
-    "Shoes",
-    "T-Shirts",
-    "Jeans",
-    "Jackets",
-    "Bags",
-    "Suits",
-  ];
+  const { categories } = useSelector((state) => state.products);
 
   return (
     <>
